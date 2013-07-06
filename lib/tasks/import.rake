@@ -5,7 +5,7 @@ require 'open-uri'
 require 'json'
 
 task :import_countries => :environment do
-	url = 'http://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/traveladvice?rows=200&offset=200&output=json'	
+	url = 'http://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/traveladvice?rows=200&offset=0&output=json'	
 	results = JSON.parse(open( url ).read)
 
 	results.each do |result|
