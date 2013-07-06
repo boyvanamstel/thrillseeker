@@ -10,6 +10,7 @@ task :import do
 	Rake::Task["import_reports"].invoke
 	Rake::Task["import_prisoners"].invoke
 	Rake::Task["import_prices"].invoke
+	Rake::Task["import_dangers"].invoke
 end
 
 def import_countries(url)
@@ -96,7 +97,7 @@ task :import_prisoners => :environment do
 	end
 end
 
-task :import_categories => :environment do
+task :import_dangers => :environment do
 
 	categories = ['oorlog', 'rebellen', 'terrorist', 'piraterij', 'geweld', 'carjacking', 'afpersing', 'aardbeving', 'orkaan', 'lawine', 'beroving', 'brand', 'verkeer', 'cycloon', 'demonstratie', 'overstroming', 'wegen']
 

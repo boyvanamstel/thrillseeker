@@ -21,11 +21,14 @@
         <li class="country classification_<%= country.classification %>">
           <div class="row">
             <div class="image span3">
-              <%= image_tag 'http://placehold.it/250x150' %>
+              <% country.dangers.each do |danger| %>
+                <% danger.to_yaml %>
+                <%= danger.title %>,
+              <% end %>
               <%= link_to 'Boek Die Trip!', country_path(country), { :class => 'btn btn-large btn-warning' } %>
             </div>
             <div class="span9">
-              <h2><%= country.title %></h2>
+              <h2><%= country.cool_title %></h2>
               <div class="info">
                 <% if defined? country.report %>
                   <p><%= truncate(strip_tags(country.report.algemeen), length: 250) %>
