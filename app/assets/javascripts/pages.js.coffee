@@ -17,13 +17,18 @@ $(document).ready(->
       $('#slider-image-' + slider_image).show()
       prev_value = value
   )
+
   $('#slider-element').mouseup(->
     $('#slider-element').val(value)
     $('#countries li.country').hide();
-    $('#countries li.classification_' + value).slideDown()
+    $('#countries li.classification_' + value).show()
   )
 
-  $('#slider-element').change()
-  $('#slider-element').mouseup()
+  $('#slider-element').on('touchend',->
+    $('#slider-element').trigger('mouseup')
+  )
+
+  
+  $('#slider-element').trigger('mouseup')
 
 )
