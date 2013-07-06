@@ -4,17 +4,6 @@
 
 $(document).ready(->
 
-  $('#countries li.country').each( (i, country) ->
-    $.ajax({
-      type : "GET",
-      dataType : "jsonp",
-      url : 'http://api.openweathermap.org/data/2.5/weather?q=' + $('h2', country).text() 
-      success: (data) ->
-        if data.main && data.main.temp
-          $('.temp', country).text( (Math.round((data.main.temp - 272.15) * 10) / 10) + '°C' )
-    });
-  )
-
   slider_images = ["rustgevend", "actief", "spannend", "extreem"]
 
   prev_value = 1
