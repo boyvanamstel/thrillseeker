@@ -1,20 +1,21 @@
 <div id="slider">
-  <input id="slider-element" type="range" min="0" max="500" class="slider" />
+  <input id="slider-element" type="range" min="1" max="4" class="slider" />
   <p class="note">Current value: <span id="slider-value">0</span></p>
 </div>
 <div class="container">
   <div class="row">
     <div class="span12">
       <ul id="countries">
-        <li>
+        <% @countries.each do |country| %>
+        <li class="country classification_<%= country.classification %>">
           <div class="row">
             <div class="span3">
               <%= image_tag 'http://placehold.it/250x150' %>
             </div>
             <div class="span9">
-              <h2>Laosssss</h2>
+              <h2><%= country.title %></h2>
               <ul class="row weather">
-                <li class="span3">
+                <li class="temp span3">
                   20C
                 </li>
                 <li class="span3">
@@ -31,10 +32,11 @@
               500 overwinteraars
             </div>
             <div class="span3">
-              <%= link_to 'Boek Die Trip!', root_url, { :class => 'btn btn-large btn-warning pull-right' } %>
+              <%= link_to 'Boek Die Trip!', country_path(country), { :class => 'btn btn-large btn-warning pull-right' } %>
             </div>
           </div>
         </li>
+        <% end %>
       </ul>
     </div>
   </div>
