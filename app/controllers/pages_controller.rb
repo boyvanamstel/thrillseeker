@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @countries = Country.all
+    @countries = Country.find(:all, :order => 'title ASC' )
   end
 end

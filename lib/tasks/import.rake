@@ -57,3 +57,14 @@ task :import_reports => :environment do
 		report.save
 	end
 end
+
+task :import_prisoners => :environment do
+	path = 'lib/assets/prisoners.json'
+	results = JSON.parse(open( path ).read)
+	results.each do |key, value|
+		country = Country.find_by_title(key)
+		if country
+			Prisoner.create( :country_id => country.id, :count =>  value);
+		end
+	end
+end
