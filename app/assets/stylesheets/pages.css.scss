@@ -1,3 +1,48 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#countries, #countries > li,
+.weather, .weather > li {
+  list-style: none;
+}
+#countries, #countries > li {
+  padding: 0;
+  margin: 0;
+}
+
+#countries {
+  h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 60px;
+  }
+  img {
+    width: 100%;
+  }
+
+  .weather {
+    height: 110px;
+    li {
+      background-image: linear-gradient(#45baff, #2c79a7);
+      height: 100%;
+    }
+  }
+
+  .meta {
+    margin-top: 20px;
+  }
+}
+
+.navbar { margin-bottom: 0; }
+#slider {
+  background: #ddd; 
+  height: 300px;
+  text-align: center;
+
+  .slider {
+    margin: 40px 0;
+    width: 80%;
+  }
+}
