@@ -48,6 +48,9 @@
   position: relative;
   text-align: center;
 
+  .slider-image { display: none; }
+  .slider-image:first-child { display: block; }
+
   #slider-container {
     position: absolute;
     top: 84%;
