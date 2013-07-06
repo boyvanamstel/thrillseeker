@@ -35,5 +35,6 @@ $(document).ready(->
   )
 
   $('#slider-element').change()
+  $('#slider-element').mouseup()
 
 )
