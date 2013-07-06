@@ -4,18 +4,27 @@
 
 
 #countries, #countries > li,
-.weather, .weather > li {
+.stats, .stats > li {
   list-style: none;
-}
-#countries, #countries > li {
   padding: 0;
   margin: 0;
 }
 
 #countries {
 
-  li.country { display: none; }
-  
+  li.country { display: none; margin: 20px 0; }
+
+  .image {
+    text-align: center;
+    position: relative;
+    a {
+      margin: 0 auto;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
   h2 {
     margin: 0;
     padding: 0;
@@ -25,12 +34,8 @@
     width: 100%;
   }
 
-  .weather {
-    height: 110px;
-    li {
-      background-image: linear-gradient(#45baff, #2c79a7);
-      height: 100%;
-    }
+  .stats {
+    text-align: center;
   }
 
   .meta {

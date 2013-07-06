@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20130706144129) do
     t.string   "openid"
     t.string   "title"
     t.string   "classification"
-    t.integer  "report_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

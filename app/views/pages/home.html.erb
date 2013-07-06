@@ -1,6 +1,5 @@
 <div id="slider">
-  <input id="slider-element" type="range" min="1" max="4" class="slider" />
-  <p class="note">Current value: <span id="slider-value">0</span></p>
+  <input id="slider-element" type="range" value="1" min="1" max="4" class="slider" />
 </div>
 <div class="container">
   <div class="row">
@@ -9,30 +8,22 @@
         <% @countries.each do |country| %>
         <li class="country classification_<%= country.classification %>">
           <div class="row">
-            <div class="span3">
+            <div class="image span3">
               <%= image_tag 'http://placehold.it/250x150' %>
+              <%= link_to 'Boek Die Trip!', country_path(country), { :class => 'btn btn-large btn-warning' } %>
             </div>
             <div class="span9">
               <h2><%= country.title %></h2>
-              <ul class="row weather">
-                <li class="temp span3">
-                  20C
+              <div class="info">
+                <p><%= truncate(strip_tags(country.report.algemeen), length: 250) %>
+              </div>
+              <ul class="stats row">
+                <li class="span3 price"></li>
+                <li class="span3 temp">
+                  ?
                 </li>
-                <li class="span3">
-                  20C
-                </li>
-                <li class="span3">
-                  20C
-                </li>
+                <li class="span3 prison"></li>
               </ul>
-            </div>
-          </div>
-          <div class="row meta">
-            <div class="span9">
-              500 overwinteraars
-            </div>
-            <div class="span3">
-              <%= link_to 'Boek Die Trip!', country_path(country), { :class => 'btn btn-large btn-warning pull-right' } %>
             </div>
           </div>
         </li>

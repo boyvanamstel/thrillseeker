@@ -10,13 +10,11 @@ $(document).ready(->
       dataType : "jsonp",
       url : 'http://api.openweathermap.org/data/2.5/weather?q=' + $('h2', country).text() 
       success: (data) ->
-        $('.temp', country).text(data.main.temp)
-        console.log data
+        $('.temp', country).text( (Math.round((data.main.temp - 272.15) * 10) / 10) + '°C' )
     });
   )
 
   $('#slider-element').change(->
-    $('#slider-value').html(this.value)
     $('#countries li.country').hide();
     $('#countries li.classification_' + this.value).slideDown()
   )
