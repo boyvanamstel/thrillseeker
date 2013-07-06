@@ -28,7 +28,7 @@ task :import_countries => :environment do
 
 end
 
-task :import_report => :environment do
+task :import_reports => :environment do
 	baseUrl = 'http://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/traveladvice/'
 
 	countries = Country.all
@@ -36,7 +36,24 @@ task :import_report => :environment do
 	countries.each do |country|
 		url = baseUrl + country.openid + '?output=json'
 		result = JSON.parse(open( url ).read)
-		puts result.to_yaml
-		raise 'end'
+
+		report = Report.new;
+
+		result['content'].each do |content|
+			if content['paragraphtitle'] === 'Actualiteiten'
+				report.actueel = content['paragraph']
+			elsif content['paragraphtitle'] === 'Algemeen'
+				report.algemeen = content['paragraph']
+			elsif content['paragraphtitle'] === 'Terrorisme'
+				report.terrorisme = content['paragraph']
+			elsif content['paragraphtitle'] === 'Zware criminaliteit'
+				report.criminaliteit = content['paragraph']
+			elsif content['paragraphtitle'] === 'Onveilige gebieden'
+				report.gebieden = content['paragraph']
+			end
+		end
+
+		report.country_id = country.id
+		report.save
 	end
 end

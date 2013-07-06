@@ -17,6 +17,18 @@ ActiveRecord::Schema.define(version: 20130706123703) do
     t.string   "openid"
     t.string   "title"
     t.string   "classification"
+    t.integer  "report_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reports", force: true do |t|
+    t.integer  "country_id"
+    t.string   "algemeen"
+    t.string   "actueel"
+    t.string   "terrorisme"
+    t.string   "criminaliteit"
+    t.string   "gebieden"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
