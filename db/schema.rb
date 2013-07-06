@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130706145718) do
+ActiveRecord::Schema.define(version: 20130706194158) do
 
   create_table "countries", force: true do |t|
     t.string   "openid"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20130706145718) do
     t.string   "wiki"
     t.integer  "price"
   end
+
+  create_table "dangers", force: true do |t|
+    t.integer  "country_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dangers", ["country_id"], name: "index_dangers_on_country_id"
 
   create_table "prisoners", force: true do |t|
     t.integer  "country_id"

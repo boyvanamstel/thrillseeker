@@ -95,3 +95,22 @@ task :import_prisoners => :environment do
 		end
 	end
 end
+
+task :import_categories => :environment do
+
+	categories = ['oorlog', 'rebellen', 'terrorist', 'piraterij', 'geweld', 'carjacking', 'afpersing', 'aardbeving', 'orkaan', 'lawine', 'beroving', 'brand', 'verkeer', 'cycloon', 'demonstratie', 'overstroming', 'wegen']
+
+	categories.each do |category|
+		results = Report.where( "reports.algemeen LIKE '%#{category}%' OR reports.actueel LIKE '%#{category}%' OR reports.terrorisme LIKE '%#{category}%' OR reports.criminaliteit LIKE '%#{category}%' OR reports.gebieden LIKE '%#{category}%'" )
+		
+		results.each do |result|
+			country = result.country
+			danger = Danger.new(:country_id => country.id, :title => category);
+			danger.save
+		end
+
+	end
+end
+
+
+
