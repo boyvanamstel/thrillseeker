@@ -1,2 +1,42 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="slider">
+  <input id="slider-element" type="range" min="0" max="500" class="slider" />
+  <p class="note">Current value: <span id="slider-value">0</span></p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <ul id="countries">
+        <li>
+          <div class="row">
+            <div class="span3">
+              <%= image_tag 'http://placehold.it/250x150' %>
+            </div>
+            <div class="span9">
+              <h2>Laosssss</h2>
+              <ul class="row weather">
+                <li class="span3">
+                  20C
+                </li>
+                <li class="span3">
+                  20C
+                </li>
+                <li class="span3">
+                  20C
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row meta">
+            <div class="span9">
+              500 overwinteraars
+            </div>
+            <div class="span3">
+              <%= link_to 'Boek Die Trip!', root_url, { :class => 'btn btn-large btn-warning pull-right' } %>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
