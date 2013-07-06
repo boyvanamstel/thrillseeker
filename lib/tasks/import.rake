@@ -113,5 +113,28 @@ task :import_dangers => :environment do
 	end
 end
 
+task :update_weather => :environment do
+	countries = Country.all
+
+	baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q='
+
+	countries.each do |country|
+		url = URI::encode( baseUrl + country.title )
+		result = JSON.parse(open( url ).read)
+
+		if defined? result['main']['temp']
+
+			temp = result['main']['temp'].to_i - 272.15  
+
+			country.weather_main = result['weather'][0]['main'].to_s
+			country.weather_temp = (temp*2).round / 2.0
+			country.save
+			puts country.title
+		end
+	end
+
+end
+
+
 
 

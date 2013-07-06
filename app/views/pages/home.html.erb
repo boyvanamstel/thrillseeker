@@ -39,7 +39,11 @@
                   <%= country.price %>
                 </li>
                 <li class="span3 temp">
-                  ?
+                  <% if defined? country.weather_temp %>
+                    <%= country.weather_temp %>°C
+                  <% else %>
+                    Onbekend
+                  <% end %>
                 </li>
                 <li class="span3 prison">
                   <% if defined? country.prisoner.count %>
