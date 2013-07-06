@@ -9,6 +9,7 @@ task :import do
 	Rake::Task["import_countries"].invoke
 	Rake::Task["import_reports"].invoke
 	Rake::Task["import_prisoners"].invoke
+	Rake::Task["import_prices"].invoke
 end
 
 def import_countries(url)
@@ -75,7 +76,7 @@ task :import_prices => :environment do
 	countries = Country.all
 	baseUrl = 'http://nl.afstand.org/amsterdam/'
 	countries.each do |country|
-		url = baseUrl + country.title
+		url = URI::encode( baseUrl + country.title )
 		doc = Nokogiri::HTML(open(url))
 		test = Hash[doc.xpath("//div/@*[starts-with(name(), 'data-')]").map{|e| [e.name,e.value]}]
 		price = 50 + ( test['data-distance'].to_i * 0.11 )
