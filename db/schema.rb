@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130706144129) do
+ActiveRecord::Schema.define(version: 20130706145718) do
 
   create_table "countries", force: true do |t|
     t.string   "openid"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20130706144129) do
     t.string   "classification"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "wiki"
+    t.integer  "price"
   end
 
   create_table "prisoners", force: true do |t|

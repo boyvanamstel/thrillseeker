@@ -3,6 +3,7 @@ desc "Refresh all data"
 
 require 'open-uri'
 require 'json'
+require 'nokogiri'
 
 task :import_countries => :environment do
 	url = 'http://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/traveladvice?rows=200&offset=0&output=json'	
@@ -55,6 +56,19 @@ task :import_reports => :environment do
 
 		report.country_id = country.id
 		report.save
+	end
+end
+
+task :import_prices => :environment do
+	countries = Country.all
+	baseUrl = 'http://nl.afstand.org/amsterdam/'
+	countries.each do |country|
+		url = baseUrl + country.title
+		doc = Nokogiri::HTML(open(url))
+		test = Hash[doc.xpath("//div/@*[starts-with(name(), 'data-')]").map{|e| [e.name,e.value]}]
+		price = 50 + ( test['data-distance'].to_i * 0.11 )
+		country.price = price
+		country.save
 	end
 end
 
