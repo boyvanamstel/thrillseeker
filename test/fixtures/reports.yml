@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  country: 
+  actueel: MyString
+  terrorisme: MyString
+  criminaliteit: MyString
+  gebieden: MyString
+
+two:
+  country: 
+  actueel: MyString
+  terrorisme: MyString
+  criminaliteit: MyString
+  gebieden: MyString
