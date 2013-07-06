@@ -4,8 +4,14 @@ desc "Refresh all data"
 require 'open-uri'
 require 'json'
 
-task :import_countries => :environment do
-	url = 'http://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/traveladvice?rows=200&offset=0&output=json'	
+task :import do
+	Rake::Task["import_countries"].invoke
+	Rake::Task["import_reports"].invoke
+	Rake::Task["import_prisoners"].invoke
+end
+
+def import_countries(url)
+
 	results = JSON.parse(open( url ).read)
 
 	results.each do |result|
@@ -25,6 +31,12 @@ task :import_countries => :environment do
 		
 		country.save
 	end
+ 
+end
+
+task :import_countries => :environment do
+	import_countries('http://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/traveladvice?rows=200&offset=0&output=json')
+	import_countries('http://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/traveladvice?rows=200&offset=200&output=json')
 
 end
 

@@ -14,9 +14,12 @@ $(document).ready(->
     });
   )
 
+  slider_images = ["rustgevend", "actief", "spannend", "extreem"]
+
   $('#slider-element').change(->
     $('#countries li.country').hide();
     $('#countries li.classification_' + this.value).slideDown()
+    $('#slider-image').attr('src', '/images/' + slider_images[this.value - 1] + '.png')
   )
 
   $('#slider-element').change()
