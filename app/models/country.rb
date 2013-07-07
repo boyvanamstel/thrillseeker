@@ -41,9 +41,9 @@ class Country < ActiveRecord::Base
           return "Jeep Safari in #{ self.title }"
         when 'terrorist'
           if self.classification.to_i < 3
-            return ["Kamperen in #{ self.title }", "Bungalow in #{ self.title }", "City-trip #{ self.title }", "Backpacken in #{ self.title }"].sample
+            return ["Kamperen in #{ self.title }", "Bungalow in #{ self.title }", "Citytrip naar #{ self.title }", "Backpacken in #{ self.title }"].sample
           elsif self.classification.to_i >= 3
-            return "Heilige oorlog voeren in #{ self.title }"
+            return "Heilige Oorlog Voeren in #{ self.title }"
           else
             return self.title
           end
@@ -55,6 +55,10 @@ class Country < ActiveRecord::Base
 
     self.title 
 
+  end
+
+  def death_rating
+    3
   end
 
 end

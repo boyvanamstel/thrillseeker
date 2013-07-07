@@ -4,7 +4,7 @@
 
 $(document).ready(->
 
-  slider_images = ["rustgevend", "actief", "spannend", "extreem"]
+  slider_images = ["beginner", "gevorderd", "veteraan", "ramptoerist"]
 
   prev_value = 1
   value = 1

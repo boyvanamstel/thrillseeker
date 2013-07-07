@@ -6,6 +6,9 @@
 #countries, #countries > li,
 .stats, .stats > li {
   list-style: none;
+}
+
+#countries, #countries > li {
   padding: 0;
   margin: 0;
 }
@@ -26,6 +29,15 @@
       right: 0;
     }
   }
+
+  .temp {
+    font-size: 200%;
+    font-weight: bold;
+    img {
+      width: 96px;
+    }
+  }
+
   h2 {
     margin: 0;
     padding: 0;
@@ -35,12 +47,43 @@
     width: 100%;
   }
 
+
+  .death-rating {
+    &, > li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li { 
+      float: left; 
+      img { width: 48px; }
+      img.filled { opacity: 0.5; }
+    }
+
+  }
   .stats {
-    text-align: center;
   }
 
   .meta {
     margin-top: 20px;
+  }
+
+  .buttons {
+    margin-top: 20px;
+  }
+
+  .price-caption {
+    display: block;
+    margin-right: 1em;
+    padding: 14px 0 0 0;
+    font-size: 150%;
+
+    color: #999;
+
+    .discount {
+      font-size: 160%;
+      color: #222;
+    }
   }
 }
 
