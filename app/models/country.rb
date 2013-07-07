@@ -66,5 +66,10 @@ class Country < ActiveRecord::Base
     return "#{ classes[self.classification.to_i - 1] }2.png"
   end
 
+  def reisleider
+    reisleiders = ["barry", "robin", "boy"]
+    return "#{ reisleiders.sample }.png"
+  end
+
 
 end
