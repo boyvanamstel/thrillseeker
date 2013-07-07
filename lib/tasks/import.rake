@@ -5,6 +5,7 @@ require 'open-uri'
 require 'json'
 require 'nokogiri'
 require 'crack'
+require 'csv'
 
 task :import do
 	Rake::Task["import_countries"].invoke
@@ -202,6 +203,28 @@ task :import_consulates => :environment do
 
 end
 
+task :import_deaths => :environment do
+	file = 'lib/assets/deaths.csv'
+	contents = File.open(file, 'r:UTF-8') # resolves encoding errors - must use 1.9.3 else use iconv
+	CSV.parse( contents , {:col_sep => ',', :quote_char => "|"}) do |row|
+		if row[2].nil?
+			next
+		end
+
+		country = Country.where('title LIKE ?', "%#{row[2].strip[0..4]}%")
+		
+		if country.first.nil?
+			next
+		end
+
+		deaths = country.first.deaths.nil? ? 0 : country.first.deaths
+
+		country.first.deaths = deaths + 1
+
+		country.first.save
+
+	end
+end
 
 
 
