@@ -52,10 +52,11 @@
                     <% end %>
                   </li>
                   <li class="span3 prison">
+                    <%= image_tag 'icons/gevangen.png', :alt => 'gevangenen' %>
                     <% if defined? country.prisoner.count %>
                       <%= country.prisoner.count %>
                     <% else %>
-                      Onbekend
+                      ? 
                     <% end %>
                   </li>
                   <li class="span3">
