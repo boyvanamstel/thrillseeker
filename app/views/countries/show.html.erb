@@ -1,12 +1,13 @@
 
 <div class="country-header" style="background-image: url(<%= image_path(@country.class_image) %>);">
+  <h1><%= @country.title %></h1>
+  <p class="leader"><%= @country.cool_title(@country.dangers.sample) %></p>
 </div>
 
 <div class="container">
   <%= link_to (raw "&larr; Terug naar het overzicht"), root_path %>
   <div class="row">
     <div class="span9">
-      <h2><%= @country.title %></h2>
       <h3>Algemeen</h3>
       <%= raw @country.report.algemeen %>
       <h3>Actueel</h3>
@@ -19,14 +20,19 @@
       <%= raw @country.report.gebieden %>
     </div>
     <div class="span3 contact">
-      <div class="well">
-        <dl>
-          <dt>Reisleider:</dt>
-          <dd><%= @country.consulates.first.contact %></dd>
-          <dt>Telefoon:</dt>
-          <dd><%= @country.consulates.first.telephone %></dd>
-        </dl>
-      </div>
+      <% if @country.consulates.first %>
+        <div class="well">
+          <div class="thumbnail">
+            <%= image_tag @country.reisleider %>
+          </div>
+          <dl>
+            <dt>Reisleider:</dt>
+            <dd><%= @country.consulates.first.contact %></dd>
+            <dt>Telefoon:</dt>
+            <dd><%= @country.consulates.first.telephone %></dd>
+          </dl>
+        </div>
+      <% end %>
       <%= link_to 'Boek Nu!', '#', { :class => 'btn btn-large btn-warning' } %>
     </div>
   </div>
