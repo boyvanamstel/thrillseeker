@@ -2,6 +2,7 @@ class Country < ActiveRecord::Base
 	has_one :report
 	has_one :prisoner
 	has_many :dangers
+  has_many :consulates
 
   def cool_title
     if self.dangers.count > 0
@@ -26,7 +27,7 @@ class Country < ActiveRecord::Base
         when 'lawine'
           return "Lawinegevaar in #{ self.title }"
         when 'beroving'
-          return "Schavuiten in #{ self.title }"
+          return "Struikroven in #{ self.title }"
         when 'brand'
           return "Vuurtje stoken in #{ self.title }"
         when 'verkeer'

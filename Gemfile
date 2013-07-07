@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 #scraping
 gem 'nokogiri'
+gem 'crack'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
