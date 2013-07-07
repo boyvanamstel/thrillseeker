@@ -18,6 +18,7 @@ body { background: #f4f4f4; }
 
   li.country { display: none; margin: 40px 0; background: #fff; }
 
+  .info { margin: 10px 0 20px 0; line-height: 200%; }
   .meta {
     border-bottom: #f4f4f4 2px solid;
     padding-bottom: 20px;
@@ -41,11 +42,16 @@ body { background: #f4f4f4; }
     }
   }
 
-  .temp {
+  .prison, .temp {
     font-size: 200%;
     font-weight: bold;
     img {
       width: 96px;
+    }
+  }
+  .prison {
+    img {
+      width: 64px;
     }
   }
 
@@ -65,7 +71,7 @@ body { background: #f4f4f4; }
     }
     li { 
       float: left; 
-      img { width: 48px; }
+      img { width: 40px; padding: 4px 0; }
       img.filled { opacity: 0.5; }
     }
 
@@ -149,4 +155,14 @@ input[type="range"]::-webkit-slider-thumb{
     border-radius: 10px;
     border-bottom: #317da2 10px solid;
     background: #2b8bb9;
+}
+
+.country-header {
+  height: 200px;
+  margin-bottom: 40px;
+  background-position: 50% 80%;
+  background-size: 100% auto;
+}
+
+.contact {
 }

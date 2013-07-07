@@ -18,7 +18,7 @@ class Country < ActiveRecord::Base
         when 'carjacking'
           return "Joyriden in #{ self.title }"
         when 'afpersing'
-          return "Omkopen in #{ self.title }"
+          return "Afpersen in #{ self.title }"
         when 'aardbeving'
           return "Aardbeving in #{ self.title }"
         when 'orkaan'
@@ -60,5 +60,11 @@ class Country < ActiveRecord::Base
   def death_rating
     3
   end
+
+  def class_image
+    classes = ["beginner", "gevorderd", "veteraan", "ramptoerist"]
+    return "#{ classes[self.classification.to_i - 1] }2.png"
+  end
+
 
 end

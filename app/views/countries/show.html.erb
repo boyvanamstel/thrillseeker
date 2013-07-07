@@ -1,17 +1,36 @@
-<div class="container">
-  <h2><%= @country.title %></h2>
-  <h3>Algemeen</h3>
-  <%= raw @country.report.algemeen %>
-  <h3>Actueel</h3>
-  <%= raw @country.report.actueel %>
-  <h3>Terrorisme</h3>
-  <%= raw @country.report.terrorisme %>
-  <h3>Criminaliteit</h3>
-  <%= raw @country.report.criminaliteit %>
-  <h3>Gebieden</h3>
-  <%= raw @country.report.gebieden %>
 
-  <%= @country.consulates.to_yaml %>
+<div class="country-header" style="background-image: url(<%= image_path(@country.class_image) %>);">
+</div>
+
+<div class="container">
+  <%= link_to (raw "&larr; Terug naar het overzicht"), root_path %>
+  <div class="row">
+    <div class="span9">
+      <h2><%= @country.title %></h2>
+      <h3>Algemeen</h3>
+      <%= raw @country.report.algemeen %>
+      <h3>Actueel</h3>
+      <%= raw @country.report.actueel %>
+      <h3>Terrorisme</h3>
+      <%= raw @country.report.terrorisme %>
+      <h3>Criminaliteit</h3>
+      <%= raw @country.report.criminaliteit %>
+      <h3>Gebieden</h3>
+      <%= raw @country.report.gebieden %>
+    </div>
+    <div class="span3 contact">
+      <div class="well">
+        <dl>
+          <dt>Reisleider:</dt>
+          <dd><%= @country.consulates.first.contact %></dd>
+          <dt>Telefoon:</dt>
+          <dd><%= @country.consulates.first.telephone %></dd>
+        </dl>
+      </div>
+      <%= link_to 'Boek Nu!', '#', { :class => 'btn btn-large btn-warning' } %>
+    </div>
+  </div>
+
 
 
 </div>
