@@ -32,7 +32,7 @@
                 <% end %>
               </div>
               <div class="span9 meta">
-                <h2><%= country.cool_title(danger) %></h2>
+                <h2><%= link_to "#{ country.cool_title(danger) }", country_path(country) %></h2>
                 <div class="info">
                   <% if defined? country.report %>
                     <p><%= truncate(strip_tags(country.report.algemeen), length: 250) %>
