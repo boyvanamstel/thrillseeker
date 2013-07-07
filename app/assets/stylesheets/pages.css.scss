@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body { background: #f4f4f4; }
 
 #countries, #countries > li,
 .stats, .stats > li {
@@ -15,7 +16,12 @@
 
 #countries {
 
-  li.country { display: none; margin: 20px 0; }
+  li.country { display: none; margin: 40px 0; background: #fff; }
+
+  .meta {
+    border-bottom: #222 1px solid;
+    padding-bottom: 20px;
+  }
 
   .image {
     text-align: center;
@@ -27,6 +33,11 @@
       bottom: 0;
       left: 0;
       right: 0;
+    }
+    img {
+      width: 80%;
+      margin: 10% 10%;
+      opacity: 0.5;
     }
   }
 
@@ -43,12 +54,10 @@
     padding: 0;
     line-height: 60px;
   }
-  img {
-    width: 100%;
-  }
 
 
   .death-rating {
+    margin-right: 20px !important;
     &, > li {
       list-style: none;
       padding: 0;
@@ -69,7 +78,8 @@
   }
 
   .buttons {
-    margin-top: 20px;
+    padding: 16px;
+    img { height: 48px; width: 48px; margin-right: 20px; }
   }
 
   .price-caption {

@@ -18,63 +18,70 @@
     <div class="span12">
       <ul id="countries">
         <% @countries.each do |country| %>
+        <% danger = country.dangers.sample %>
         <li class="country classification_<%= country.classification %>">
-          <div class="row">
-            <div class="image span3">
-              <% country.dangers.each do |danger| %>
-                <% danger.to_yaml %>
-                <%= danger.title %>,
-              <% end %>
+          <div>
+            <div class="row divider">
+              <div class="image span3">
+                <% if danger %>
+                  <% if country.classification.to_i >= 3 and danger.title == 'terrorist' %>
+                    <%= image_tag "icons/heiligeoorlog.png", :alt => danger.title %>
+                  <% else %>
+                    <%= image_tag "icons/#{ danger.title }.png", :alt => danger.title %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="span9 meta">
+                <h2><%= country.cool_title(danger) %></h2>
+                <div class="info">
+                  <% if defined? country.report %>
+                    <p><%= truncate(strip_tags(country.report.algemeen), length: 250) %>
+                  <% end %>
+                </div>
+                <ul class="stats row">
+                  <li class="span3 temp">
+                    <% if country.weather_main %>
+                      <%= image_tag "#{ country.weather_main.downcase }.png", :alt => country.weather_main %>
+                    <% else %>
+                      <%= image_tag "clear.png", :alt => 'clear' %>
+                    <% end %>
+                    <% if country.weather_temp %>
+                      <%= country.weather_temp %>°C
+                    <% else %>
+                      Onbekend
+                    <% end %>
+                  </li>
+                  <li class="span3 prison">
+                    <% if defined? country.prisoner.count %>
+                      <%= country.prisoner.count %>
+                    <% else %>
+                      Onbekend
+                    <% end %>
+                  </li>
+                  <li class="span3">
+                    <ul class="death-rating pull-right">
+                      <% for i in 1..country.death_rating %>
+                        <li><%= image_tag 'dood2.png', :class => 'filled' %></li>
+                      <% end %>
+                      <% for i in 1..(5 - country.death_rating) %>
+                        <li><%= image_tag 'dood1.png' %></li>
+                      <% end %>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="span9">
-              <h2><%= country.cool_title %></h2>
-              <div class="info">
-                <% if defined? country.report %>
-                  <p><%= truncate(strip_tags(country.report.algemeen), length: 250) %>
-                <% end %>
-              </div>
-              <ul class="stats row">
-                <li class="span3 temp">
-                  <% if country.weather_main %>
-                    <%= image_tag "#{ country.weather_main.downcase }.png", :alt => country.weather_main %>
-                  <% else %>
-                    <%= image_tag "clear.png", :alt => 'clear' %>
-                  <% end %>
-                  <% if country.weather_temp %>
-                    <%= country.weather_temp %>°C
-                  <% else %>
-                    Onbekend
-                  <% end %>
-                </li>
-                <li class="span3 prison">
-                  <% if defined? country.prisoner.count %>
-                    <%= country.prisoner.count %>
-                  <% else %>
-                    Onbekend
-                  <% end %>
-                </li>
-                <li class="span3">
-                  <ul class="death-rating pull-right">
-                    <% for i in 1..country.death_rating %>
-                      <li><%= image_tag 'dood2.png', :class => 'filled' %></li>
-                    <% end %>
-                    <% for i in 1..(5 - country.death_rating) %>
-                      <li><%= image_tag 'dood1.png' %></li>
-                    <% end %>
-                  </ul>
-                </li>
-              </ul>
-              <div class="buttons">
-                <% if country.price.to_i != 0 %>
-                  <% price_link = "Boek Nu!" %>
-                <% else %>
-                  <% price_link = "Vraag Een Offerte Aan" %>
-                <% end %>
-                <%= link_to (raw price_link), country_path(country), { :class => 'btn btn-large btn-warning pull-right' } %>
-                <% if country.price.to_i != 0 %>
-                  <strong class="pull-right price-caption"><%= raw "Van <strike>€ #{ country.price + rand(100) }</strike> voor <span class='discount'>€ #{ country.price }</span>" %></strong>
-                <% end %>
-              </div>
+            <div class="row buttons">
+              <% if country.price.to_i != 0 %>
+                <% price_link = "Boek Nu!" %>
+              <% else %>
+                <% price_link = "Vraag Een Offerte Aan" %>
+              <% end %>
+              <%= link_to (raw price_link), country_path(country), { :class => 'btn btn-large btn-warning pull-right' } %>
+              <% if country.price.to_i != 0 %>
+                <strong class="pull-right price-caption"><%= raw "Van <strike>€ #{ country.price + rand(100) }</strike> voor <span class='discount'>€ #{ country.price }</span>" %></strong>
+              <% end %>
+              <%= image_tag 'icons/vliegtuig.png', { :class => 'pull-right' } %>
             </div>
           </div>
         </li>

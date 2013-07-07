@@ -3,9 +3,8 @@ class Country < ActiveRecord::Base
 	has_one :prisoner
 	has_many :dangers
 
-  def cool_title
-    if self.dangers.count > 0
-      danger = self.dangers.sample
+  def cool_title(danger)
+    if danger
       case danger.title
         when 'oorlog'
           return "Oorlogje Spelen in #{ self.title }"
