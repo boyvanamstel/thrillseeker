@@ -14,6 +14,8 @@ task :import do
 	Rake::Task["import_prices"].invoke
 	Rake::Task["import_dangers"].invoke
 	Rake::Task["import_consulates"].invoke
+	Rake::Task["import_deaths"].invoke
+	Rake::Task["update_weather"].invoke
 end
 
 def import_countries(url)
@@ -139,7 +141,9 @@ task :update_weather => :environment do
 	countries.each do |country|
 		puts "Getting Wheater for #{country.title}"
 		url = URI::encode( baseUrl + country.title )
-		result = JSON.parse(open( url ).read)
+		json = open( url ).read
+		result = json && json.length >= 2 ? JSON.parse(json) : nil
+		
 
 		if defined? result['main']['temp']
 
@@ -151,6 +155,8 @@ task :update_weather => :environment do
 
 			puts country.title
 		end
+
+		sleep(0.5)
 	end
 
 end
@@ -204,6 +210,7 @@ task :import_consulates => :environment do
 end
 
 task :import_deaths => :environment do
+	puts "Counting Deaths"
 	file = 'lib/assets/deaths.csv'
 	contents = File.open(file, 'r:UTF-8') # resolves encoding errors - must use 1.9.3 else use iconv
 	CSV.parse( contents , {:col_sep => ',', :quote_char => "|"}) do |row|
@@ -222,7 +229,7 @@ task :import_deaths => :environment do
 		country.first.deaths = deaths + 1
 
 		country.first.save
-
+		puts "#{country.first.deaths} in #{country.first.title}"
 	end
 end
 
