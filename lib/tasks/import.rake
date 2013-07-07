@@ -12,6 +12,7 @@ task :import do
 	Rake::Task["import_prisoners"].invoke
 	Rake::Task["import_prices"].invoke
 	Rake::Task["import_dangers"].invoke
+	Rake::Task["import_consulates"].invoke
 end
 
 def import_countries(url)
@@ -167,10 +168,10 @@ task :import_consulates => :environment do
 
 		#next if 
 		if dbCountry.title === 'Tadzjikistan' || dbCountry.title === 'Taiwan'
-			puts "NEXT #{dbCountry.title}"
-      		next
-   		end
-   		puts "TEST #{dbCountry.title}"
+			# puts "NEXT #{dbCountry.title}"
+    		next
+ 		end
+ 		# puts "TEST #{dbCountry.title}"
 
 		consulate['country']['embassies'].each do |result|
 			embassy = result[1]
