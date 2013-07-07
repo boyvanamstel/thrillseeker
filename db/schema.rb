@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130707100953) do
+ActiveRecord::Schema.define(version: 20130707131035) do
 
   create_table "consulates", force: true do |t|
     t.integer  "country_id"
@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 20130707100953) do
 
   create_table "reports", force: true do |t|
     t.integer  "country_id"
-    t.string   "algemeen"
-    t.string   "actueel"
-    t.string   "terrorisme"
-    t.string   "criminaliteit"
-    t.string   "gebieden"
+    t.text     "algemeen"
+    t.text     "actueel"
+    t.text     "terrorisme"
+    t.text     "criminaliteit"
+    t.text     "gebieden"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

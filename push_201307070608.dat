@@ -1,0 +1,1 @@
+{"klass":"Taps::Push","database_url":"sqlite://db/development.sqlite3","remote_url":"http://heroku:osui59a24am79x@taps19.heroku.com","session_uri":"/sessions/1919388055","stream_state":{},"completed_tables":["schema_migrations","countries"],"table_filter":null,"local_tables_info":{"schema_migrations":8,"countries":217,"reports":217,"prisoners":48,"dangers":216,"consulates":119}}
