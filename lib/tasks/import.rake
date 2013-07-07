@@ -182,6 +182,7 @@ task :import_consulates => :environment do
 				puts "Adding Consulate to #{dbCountry.title}"
 				consulate = Consulate.find_or_create_by_title(embassy['agencyLocation'])
 			
+				consulate.country_id = dbCountry.id
 				consulate.location = embassy['coordinates']
 				consulate.mail = embassy['email']
 				if defined? embassy['phoneNumbers']['phoneNumbers']
