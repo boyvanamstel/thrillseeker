@@ -7,7 +7,8 @@
 <div class="container">
   <%= link_to (raw "&larr; Terug naar het overzicht"), root_path %>
   <div class="row">
-    <div class="span9">
+    <div class="span10 offset1 country-content">
+      <%= link_to 'Boek Nu!', '#', { :class => 'btn btn-large btn-warning pull-right' } %>
       <h3>Algemeen</h3>
       <%= raw @country.report.algemeen %>
       <h3>Actueel</h3>
@@ -19,21 +20,24 @@
       <h3>Gebieden</h3>
       <%= raw @country.report.gebieden %>
     </div>
-    <div class="span3 contact">
+    <div class="span8 offset2 contact">
       <% if @country.consulates.first %>
-        <div class="well">
+        <div class="travel-guide clearfix">
+          <h1>Mocht het niet allemaal goed aflopen of je hebt hulp nodig tijdens je permanente verblijf.<br/>
+            <% if !@country.consulates.first.telephone.nil? %>
+              <small>Dan kun je mij altijd 24/7 bereiken op <%= @country.consulates.first.telephone %></small>
+            <% end %>
+          </h1>
           <div class="thumbnail">
             <%= image_tag @country.reisleider %>
           </div>
           <dl>
             <dt>Reisleider:</dt>
             <dd><%= @country.consulates.first.contact %></dd>
-            <dt>Telefoon:</dt>
-            <dd><%= @country.consulates.first.telephone %></dd>
+            <dd><a href="mailto:<%= @country.consulates.first.mail %>"><%= @country.consulates.first.mail %></a></dd>
           </dl>
         </div>
       <% end %>
-      <%= link_to "Boek Nu Voor € #{ @country.price }!", '#', { :class => 'btn btn-large btn-warning' } %>
     </div>
   </div>
 

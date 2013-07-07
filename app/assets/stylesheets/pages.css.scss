@@ -176,3 +176,31 @@ input[type="range"]::-webkit-slider-thumb{
   h1 { padding: 30px 0 10px 0; font-size: 48px; }
 }
 
+.contact {
+}
+
+.country-content{
+  background:#FFF;
+  padding:3em;
+  margin-top:2em;
+  margin-bottom:4em;
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.travel-guide{
+  background:#FFF;
+  margin-bottom:2em;
+  padding:3em;
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  h1{
+    text-align:center;
+    margin-bottom:2em;
+  }
+  .thumbnail{
+    width:25%;
+    margin-left:15%;
+    margin-right:5%;
+    float:left;
+    background:#FFF;
+  }
+
+}
