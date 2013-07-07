@@ -14,6 +14,7 @@ task :import do
 	Rake::Task["import_prices"].invoke
 	Rake::Task["import_dangers"].invoke
 	Rake::Task["import_consulates"].invoke
+	Rake::Task["import_deaths"].invoke
 end
 
 def import_countries(url)
