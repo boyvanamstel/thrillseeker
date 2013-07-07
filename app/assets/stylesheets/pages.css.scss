@@ -52,6 +52,9 @@
   .slider-image { display: none; }
   .slider-image:first-child { display: block; }
 
+  #slider-element{
+    cursor: pointer
+  }
   #slider-container {
     position: absolute;
     top: 84%;
