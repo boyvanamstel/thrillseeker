@@ -9,39 +9,45 @@ class Country < ActiveRecord::Base
       danger = self.dangers.sample
       case danger.title
         when 'oorlog'
-          return "Oorlogje spelen in #{ self.title }"
+          return "Oorlogje Spelen in #{ self.title }"
         when 'rebellen'
           return "Anarchie in #{ self.title }"
         when 'piraterij'
           return "Piraterij in #{ self.title }"
         when 'geweld'
-          return "Ruw geweld in #{ self.title }"
+          return "Ruw Geweld in #{ self.title }"
         when 'carjacking'
-          return "Raak je auto kwijt in #{ self.title }"
+          return "Joyriden in #{ self.title }"
         when 'afpersing'
-          return "Corruptie in #{ self.title }"
+          return "Omkopen in #{ self.title }"
         when 'aardbeving'
           return "Aardbeving in #{ self.title }"
         when 'orkaan'
-          return "Harde wind in #{ self.title }"
+          return "Stormchasen in #{ self.title }"
         when 'lawine'
           return "Lawinegevaar in #{ self.title }"
         when 'beroving'
           return "Struikroven in #{ self.title }"
         when 'brand'
-          return "Vuurtje stoken in #{ self.title }"
+          return "Vuurtje Stoken in #{ self.title }"
         when 'verkeer'
           return "Rally-rijden in #{ self.title }"
         when 'cycloon'
-          return "Windhozen in #{ self.title }"
+          return "Waterhoossurfen in #{ self.title }"
         when 'demonstratie'
           return "Demonstreer mee in #{ self.title }"
         when 'overstroming'
-          return "Watergeweld in #{ self.title }"
+          return "Waterpark in #{ self.title }"
         when 'wegen'
-          return "Gaten in de weg in #{ self.title }"
+          return "Jeep Safari in #{ self.title }"
         when 'terrorist'
-          return "Bomgordels in #{ self.title }"
+          if self.classification.to_i < 3
+            return ["Kamperen in #{ self.title }", "Bungalow in #{ self.title }", "Citytrip naar #{ self.title }", "Backpacken in #{ self.title }"].sample
+          elsif self.classification.to_i >= 3
+            return "Heilige Oorlog Voeren in #{ self.title }"
+          else
+            return self.title
+          end
         else
           return self.title
       end
@@ -50,6 +56,10 @@ class Country < ActiveRecord::Base
 
     self.title 
 
+  end
+
+  def death_rating
+    3
   end
 
 end
