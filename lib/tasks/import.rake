@@ -193,8 +193,13 @@ task :import_consulates => :environment do
 				consulate.country_id = dbCountry.id
 				consulate.location = embassy['coordinates']
 				consulate.mail = embassy['email']
-				if defined? embassy['phoneNumbers']['phoneNumbers']
-					consulate.telephone = embassy['phoneNumbers']['phoneNumbers'].first.to_s
+				if !embassy['phoneNumbers'].nil?
+					if (embassy['phoneNumbers'].values.count === 1 && embassy['phoneNumbers']['phoneNumbers'].first.length > 1)
+						consulate.telephone = embassy['phoneNumbers']['phoneNumbers'].first.to_s
+					else
+						consulate.telephone = embassy['phoneNumbers']['phoneNumbers'].to_s
+					end
+					puts consulate.telephone
 				end
 				consulate.fulladdress = embassy['address'].values.join()
 				consulate.contact = embassy['agencyHead']
