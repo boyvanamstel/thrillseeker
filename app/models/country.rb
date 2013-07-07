@@ -58,7 +58,18 @@ class Country < ActiveRecord::Base
   end
 
   def death_rating
-    3
+    if self.deaths.nil?
+      return 1
+    elsif self.deaths > 40
+      return 5
+    elsif self.deaths > 25 
+      return 4
+    elsif self.deaths > 10
+      return 3
+    elsif self.deaths > 0
+      return 2
+    end
+    return 1
   end
 
   def class_image
